@@ -32,6 +32,7 @@ PUM Preliminary Unlocking Matrix.
 FUV Final Unlocking Vector.
 
 """
+import math as m
 
 def DECIDE():
     return
@@ -45,8 +46,16 @@ def PUM():
 def FUV():
     return
 
-def LIC_0():
-    return
+def LIC_0(points, length1) -> bool:
+    result = False
+    # Handle invalid data
+    if length1 < 0:
+        return result
+    for i in range(len(points) - 1):
+        if m.dist(points[i], points[i+1]) > length1:
+            result = True
+            break
+    return result
 
 def LIC_1():
     return
