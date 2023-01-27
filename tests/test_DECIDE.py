@@ -2,94 +2,49 @@ import unittest
 
 class TestDECIDE(unittest.TestCase):
 
-    def test_LIC_0_Positive(self):
-        self.assertEqual('foo'.upper(),'FOO')
-
-    def test_LIC_1_Positive(self):
+    def test_LIC_0(self):
         pass
 
-    def test_LIC_2_Positive(self):
+    def test_LIC_1(self):
         pass
 
-    def test_LIC_3_Positive(self):
+    def test_LIC_2(self):
         pass
 
-    def test_LIC_4_Positive(self):
+    def test_LIC_3(self):
         pass
 
-    def test_LIC_5_Positive(self):
+    def test_LIC_4(self):
         pass
 
-    def test_LIC_6_Positive(self):
+    def test_LIC_5(self):
         pass
 
-    def test_LIC_7_Positive(self):
+    def test_LIC_6(self):
         pass
 
-    def test_LIC_8_Positive(self):
+    def test_LIC_7(self):
         pass
 
-    def test_LIC_9_Positive(self):
+    def test_LIC_8(self):
         pass
 
-    def test_LIC_10_Positive(self):
+    def test_LIC_9(self):
         pass
 
-    def test_LIC_11_Positive(self):
+    def test_LIC_10(self):
         pass
 
-    def test_LIC_12_Positive(self):
+    def test_LIC_11(self):
         pass
 
-    def test_LIC_13_Positive(self):
+    def test_LIC_12(self):
         pass
 
-    def test_LIC_14_Positive(self):
+    def test_LIC_13(self):
         pass
 
-    def test_LIC_0_Negative(self):
-        pass
-
-    def test_LIC_1_Negative(self):
-        pass
-
-    def test_LIC_2_Negative(self):
-        pass
-
-    def test_LIC_3_Negative(self):
-        pass
-
-    def test_LIC_4_Negative(self):
-        pass
-
-    def test_LIC_5_Negative(self):
-        pass
-
-    def test_LIC_6_Negative(self):
-        pass
-
-    def test_LIC_7_Negative(self):
-        pass
-
-    def test_LIC_8_Negative(self):
-        pass
-
-    def test_LIC_9_Negative(self):
-        pass
-
-    def test_LIC_10_Negative(self):
-        pass
-
-    def test_LIC_11_Negative(self):
-        pass
-
-    def test_LIC_12_Negative(self):
-        pass
-
-    def test_LIC_13_Negative(self):
-        pass
-
-    def test_LIC_14_Negative(self):
+    def test_LIC_14(self):
         pass
 
 if __name__ == '__main__':
