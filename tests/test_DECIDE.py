@@ -1,9 +1,26 @@
 import unittest
+from DECIDE.DECIDE import *
+
 
 class TestDECIDE(unittest.TestCase):
 
-    def test_LIC_0(self):
-        pass
+    def test_LIC_0_pos(self):
+        POINTS = [(1,1), (2,2), (4,4)]
+        LENGTH1 = 2
+        result = LIC_0(POINTS, LENGTH1)
+        self.assertTrue(result)
+    
+    def test_LIC_0_neg(self):
+        POINTS = [(1,1), (2,2), (3,3)]
+        LENGTH1 = 2
+        result = LIC_0(POINTS, LENGTH1)
+        self.assertFalse(result)
+        
+    def test_LIC_0_invalid(self):
+        POINTS = [(1,1), (2,2), (3,3)]
+        LENGTH1 = -2
+        result = LIC_0(POINTS, LENGTH1)
+        self.assertFalse(result)
 
     def test_LIC_1(self):
         pass
