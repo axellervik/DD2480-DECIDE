@@ -70,34 +70,22 @@ def LIC_7():
     return
 
 def LIC_8():
-    
     return
 
 def LIC_9():
-    
     return
 
 def LIC_10():
-    
     return
 
 def LIC_11():
-    
     return
 
 def LIC_12():
-    
     return
 
 def LIC_13():
-    
     return
 
 def LIC_14():
-    
     return
-
-
-
-    
-    
