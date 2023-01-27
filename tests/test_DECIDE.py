@@ -44,8 +44,41 @@ class TestDECIDE(unittest.TestCase):
     def test_LIC_13(self):
         pass
 
-    def test_LIC_14(self):
-        pass
+    def test_LIC_14_invalid(self):
+        AREA1 = 1
+        AREA2 = -1
+        E_PTS = 1
+        F_PTS = 1
+        POINTS = [[1,1], [2,2], [3,3], [4,4], [5,5]]
+        NUMPOINTS = 5
+        self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
 
+    def test_LIC_14_pos(self):
+        AREA1 = 1
+        AREA2 = 1
+        E_PTS = 1
+        F_PTS = 4
+        POINTS = [[1,1], [1,2], [3,3]]
+        NUMPOINTS = 3
+        self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
+
+    def test_LIC_14_neg(self):
+        AREA1 = 1
+        AREA2 = 1
+        E_PTS = 1
+        F_PTS = 1
+        POINTS = [[1,1], [2,2], [3,3]]
+        NUMPOINTS = 3
+        self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
+
+    def test_LIC_14_neg_2(self):
+        AREA1 = 1
+        AREA2 = 1
+        E_PTS = 1
+        F_PTS = 1
+        POINTS = [[1,1], [2,2], [3,3], [4,4], [5,5]]
+        NUMPOINTS = 5
+        self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
+        
 if __name__ == '__main__':
     unittest.main()
