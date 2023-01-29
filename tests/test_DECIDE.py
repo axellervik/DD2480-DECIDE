@@ -66,8 +66,65 @@ class TestDECIDE(unittest.TestCase):
     def test_LIC_9(self):
         pass
 
-    def test_LIC_10(self):
-        pass
+    def test_LIC_10_invalid(self):
+        #Checks if E_PTS => 1
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        E_PTS = 0
+        F_PTS = 1
+        AREA1 = 1
+        result = LIC_10(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1)
+        self.assertFalse(result)
+
+    def test_LIC_10_invalid2(self):
+        #Checks if F_PTS => 1
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        E_PTS = 1
+        F_PTS = 0
+        AREA1 = 1
+        result = LIC_10(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1)
+        self.assertFalse(result)
+
+    def test_LIC_10_invalid3(self):
+        #Checks if E_PTS + F_PTS <= NUMPPOINTS - 3
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        E_PTS = 2
+        F_PTS = 2
+        AREA1 = 2
+        result = LIC_10(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1)
+        self.assertFalse(result)
+
+    def test_LIC_10_neg(self):
+        #Checks if NUMPOINTS => 5
+        NUMPOINTS = 4
+        POINTS = [(1,1), (2,2), (3,3), (4,4)]
+        E_PTS = 1
+        F_PTS = 1
+        AREA1 = 2
+        result = LIC_10(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1)
+        self.assertFalse(result)
+
+    def test_LIC_10_neg2(self):
+        #Checks a negative case of points
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (3,1)]
+        E_PTS = 2
+        F_PTS = 2
+        AREA1 = 100
+        result = LIC_10(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1)
+        self.assertFalse(result)
+
+    def test_LIC_10_pos(self):
+        #Checks a positive case of points
+        NUMPOINTS = 5
+        POINTS = [(1,1), (3,3), (3,1), (4,4), (5,5)]
+        E_PTS = 1
+        F_PTS = 1
+        AREA1 = 1
+        result = LIC_10(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1)
+        self.assertTrue(result)
 
     def test_LIC_11(self):
         pass
