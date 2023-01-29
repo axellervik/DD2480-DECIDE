@@ -106,8 +106,23 @@ def LIC_6():
 def LIC_7():
     return
 
-def LIC_8():
-    return
+def LIC_8(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1):
+    if (NUMPOINTS < 5 or 1 > A_PTS or B_PTS > 1 or A_PTS + B_PTS > NUMPOINTS - 3):
+        return False
+    
+    for i in range(NUMPOINTS):
+        p1 = POINTS[i]
+        p2 = POINTS[(i + A_PTS)%NUMPOINTS]
+        p3 = POINTS[(i + A_PTS + B_PTS)%NUMPOINTS]
+        
+        d1 = m.dist(p1, p2)
+        d2 = m.dist(p1, p3)
+        d3 = m.dist(p2, p3)
+        maxDistance = max(d1, d2, d3)
+
+        if(maxDistance > RADIUS1*2):
+            return True
+    return False
 
 def LIC_9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON):
     if(NUMPOINTS < 5 or C_PTS < 1 or D_PTS < 1 or C_PTS + D_PTS > NUMPOINTS - 3):

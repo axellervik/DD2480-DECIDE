@@ -79,8 +79,59 @@ class TestDECIDE(unittest.TestCase):
     def test_LIC_7(self):
         pass
 
-    def test_LIC_8(self):
-        pass
+    def test_LIC_8_invalid(self):
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        A_PTS = -1
+        B_PTS = 1
+        RADIUS1 = 4
+        result = LIC_8(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1)
+        self.assertFalse(result)
+
+    def test_LIC_8_invalid2(self):
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        A_PTS = 1
+        B_PTS = -1
+        RADIUS1 = 4
+        result = LIC_8(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1)
+        self.assertFalse(result)
+
+    def test_LIC_8_invalid3(self):
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        A_PTS = 2
+        B_PTS = 2
+        RADIUS1 = 4
+        result = LIC_8(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1)
+        self.assertFalse(result)
+
+    def test_LIC_8_neg(self):
+        NUMPOINTS = 3
+        POINTS = [(1,1), (2,2), (3,3)]
+        A_PTS = 1
+        B_PTS = 1
+        RADIUS1 = 4
+        result = LIC_8(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1)
+        self.assertFalse(result)
+
+    def test_LIC_8_neg2(self):
+        NUMPOINTS = 6
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)]
+        A_PTS = 1
+        B_PTS = 1
+        RADIUS1 = 100
+        result = LIC_8(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1)
+        self.assertFalse(result)
+
+    def test_LIC_8_pos(self):
+        NUMPOINTS = 6
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)]
+        A_PTS = 1
+        B_PTS = 1
+        RADIUS1 = 1
+        result = LIC_8(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1)
+        self.assertTrue(result)
 
     def test_LIC_9_invalid(self):
         NUMPOINTS = 5
