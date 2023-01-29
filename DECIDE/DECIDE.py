@@ -112,8 +112,21 @@ def LIC_8():
 def LIC_9():
     return
 
-def LIC_10():
-    return
+def LIC_10(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1):
+    if (NUMPOINTS < 5 or 1 > E_PTS or 1 > F_PTS or E_PTS + F_PTS > NUMPOINTS - 3):
+        return False
+
+    for i in range(NUMPOINTS):
+        p1 = POINTS[i]
+        p2 = POINTS[(i + E_PTS)%NUMPOINTS]
+        p3 = POINTS[(i + E_PTS + F_PTS)%NUMPOINTS]
+
+        s = (m.dist(p1, p2) + m.dist(p2, p3) + m.dist(p1, p3)) / 2
+        area = m.sqrt(s * (s - m.dist(p1, p2)) * (s - m.dist(p2, p3)) * (s - m.dist(p1, p3)))
+
+        if (area > AREA1):
+            return True
+    return False
 
 def LIC_11(NUMPOINTS, POINTS, G_PTS):
     if(NUMPOINTS < 3 or G_PTS < 1 or NUMPOINTS - 2 < G_PTS):
