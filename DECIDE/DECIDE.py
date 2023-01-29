@@ -63,8 +63,21 @@ def LIC_1():
 def LIC_2():
     return
 
-def LIC_3():
-    return
+def LIC_3(points, area1) -> bool:
+    result = False
+    # Handle invalid data
+    if area1 < 0 or len(points) < 3:
+        return result
+    for i in range(len(points) - 2):
+        a = m.dist(points[i], points[i+1])
+        b = m.dist(points[i+1], points[i+2])
+        c = m.dist(points[i], points[i+2])
+        abc_div_2 = (a+b+c) / 2
+        area = m.sqrt((abc_div_2*(abc_div_2-a)*(abc_div_2-b)*(abc_div_2-c)))
+        if area > area1:
+            result = True
+            break
+    return result
 
 def LIC_4():
     return
