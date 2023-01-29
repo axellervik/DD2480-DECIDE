@@ -91,7 +91,7 @@ def LIC_11():
     return
 
 def LIC_12(POINTS, NUMPOINTS, LENGTH1, LENGTH2, K_PTS):
-    if (LENGTH2 < 0):
+    if (LENGTH2 < 0 or NUMPOINTS < 3):
             return False
     
     finnished_length1 = False
