@@ -25,9 +25,24 @@ class TestDECIDE(unittest.TestCase):
     def test_LIC_1(self):
         pass
 
-    def test_LIC_2(self):
-        pass
+    def test_LIC_2_invalid(self):
+        POINTS = [(1,1), (2,2), (3,3)]
+        EPSILON = -1
+        result = LIC_2(POINTS, EPSILON)
+        self.assertFalse(result)
 
+    def test_LIC_2_neg(self):
+        POINTS = [(2,2), (2,2), (3,3)]
+        EPSILON = (m.pi/2)
+        result = LIC_2(POINTS, EPSILON)
+        self.assertFalse(result)
+
+    def test_LIC_2_pos(self):
+        POINTS = [(1,1), (2,2), (3,3)]
+        EPSILON = (m.pi/2)
+        result = LIC_2(POINTS, EPSILON)
+        self.assertTrue(result)
+        
     def test_LIC_3(self):
         pass
 
