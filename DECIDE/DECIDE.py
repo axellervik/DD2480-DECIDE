@@ -101,24 +101,21 @@ def LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS):
             break
         x1 = POINTS[i][0]
         y1 = POINTS[i][1]
-        for j in range(NUMPOINTS):
-            if(abs(x1 - POINTS[j][0]) == E_PTS and abs(y1 - POINTS[j][1]) == F_PTS and (x1, y1) != POINTS[j]):
-                x2 = POINTS[j][0]
-                y2 = POINTS[j][1]
-                for k in range(NUMPOINTS):
-                     if(abs(x2 - POINTS[k][0]) == E_PTS and abs(y2 - POINTS[k][1]) == F_PTS and (x1, y1) != POINTS[k] and (x2, y2) != POINTS[k]):
-                        x3 = POINTS[k][0]
-                        y3 = POINTS[k][1]
 
-                        s = (m.dist([x1,y1], [x2,y2]) + m.dist([x2,y2], [x3,y3]) + m.dist([x1,y1], [x3,y3])) / 2
-                        area = (s*(s - m.dist([x1,y1], [x2,y2]))*(s - m.dist([x2,y2], [x3,y3]))*(s - m.dist([x1,y1], [x3,y3]))) ** 0.5
+        x2 = POINTS[(i+E_PTS)%NUMPOINTS][0]
+        y2 = POINTS[(i+E_PTS)%NUMPOINTS][1]
 
-                        if(area > AREA1):
-                            finished_AREA1 = True
+        x3 = POINTS[(i+E_PTS+F_PTS)%NUMPOINTS][0]
+        y3 = POINTS[(i+E_PTS+F_PTS)%NUMPOINTS][1]
 
-                        if(area < AREA2):
-                            finished_AREA2 = True
+        s = (m.dist([x1,y1], [x2,y2]) + m.dist([x2,y2], [x3,y3]) + m.dist([x1,y1], [x3,y3])) / 2
+        area = m.sqrt(s * (s - m.dist([x1,y1], [x2,y2])) * (s - m.dist([x2,y2], [x3,y3])) * (s - m.dist([x1,y1], [x3,y3])))
 
+        if (area > AREA1):
+            finished_AREA1 = True
+        if (area < AREA2):
+            finished_AREA2 = True
+    
     if(finished_AREA1 and finished_AREA2):
         return True
     return False
