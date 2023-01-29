@@ -59,16 +59,6 @@ class TestDECIDE(unittest.TestCase):
         pass
 
     def test_LIC_13_invalid(self):
-        NUMPOINTS = 3
-        POINTS = [(1,1), (2,2), (3,3)]
-        A_PTS = 2
-        B_PTS = 2
-        RADIUS1 = 4
-        RADIUS2 = 4
-        result = LIC_13(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1, RADIUS2)
-        self.assertFalse(result)
-
-    def test_LIC_13_invalid_2(self):
         NUMPOINTS = 5
         POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
         A_PTS = 2
@@ -89,6 +79,16 @@ class TestDECIDE(unittest.TestCase):
         self.assertTrue(result)
 
     def test_LIC_13_neg(self):
+        NUMPOINTS = 3
+        POINTS = [(1,1), (2,2), (3,3)]
+        A_PTS = 2
+        B_PTS = 2
+        RADIUS1 = 4
+        RADIUS2 = 4
+        result = LIC_13(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1, RADIUS2)
+        self.assertFalse(result)
+
+    def test_LIC_13_neg2(self):
         NUMPOINTS = 6
         POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)]
         A_PTS = 2
