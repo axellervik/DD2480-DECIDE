@@ -57,8 +57,20 @@ def LIC_0(points, length1) -> bool:
             break
     return result
 
-def LIC_1():
-    return
+def LIC_1(points, radius1) -> bool:
+    result = False
+    # Handle invalid data
+    if radius1 < 0 or len(points) < 3:
+        return result
+    for i in range(len(points) - 2):
+        a = m.dist(points[i], points[i+1])
+        b = m.dist(points[i+1], points[i+2])
+        c = m.dist(points[i], points[i+2])
+        abc_div_2 = (a+b+c) / 2
+        if float(radius1) >= a*b*c / (4*m.sqrt(abc_div_2*(abc_div_2-a)*(abc_div_2-b)*(abc_div_2-c))):
+            result = True
+            break
+    return result
 
 def LIC_2():
     return
