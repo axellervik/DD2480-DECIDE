@@ -104,7 +104,7 @@ def LIC_9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON):
 
         if(p1 != p2 and p3 != p2):
             angle = m.atan2(p3[1]-p2[1], p3[0]-p2[0]) - m.atan2(p1[1]-p2[1], p1[0]-p2[0])
-            if(angle < m.pi - EPSILON or angle > m.pi + EPSILON):
+            if(abs(angle) < m.pi - EPSILON or abs(angle) > m.pi + EPSILON):
                 return True
 
     return False
