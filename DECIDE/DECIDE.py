@@ -90,7 +90,7 @@ def LIC_10():
 def LIC_11():
     return
 
-def LIC_12(POINTS, NUMPOINTS, LENGTH1, LENGTH2, K_PTS):
+def LIC_12(NUMPOINTS, POINTS, LENGTH1, LENGTH2, K_PTS):
     if (LENGTH2 < 0 or NUMPOINTS < 3):
             return False
     
@@ -98,13 +98,11 @@ def LIC_12(POINTS, NUMPOINTS, LENGTH1, LENGTH2, K_PTS):
     finnished_length2 = False
 
     for i in range(NUMPOINTS):
-        x1 = POINTS[i][0]
-        y1 = POINTS[i][1]
+        p1 = POINTS[i]
+        p2 = POINTS[(i+K_PTS)%NUMPOINTS]
 
-        x2 = POINTS[(i+K_PTS)%NUMPOINTS][0]
-        y2 = POINTS[(i+K_PTS)%NUMPOINTS][1]
+        dist = m.dist(p1, p2)
 
-        dist = m.sqrt((x2-x1)**2 + (y2-y1)**2)
         if (dist > LENGTH1):
             finnished_length1 = True
         if (dist < LENGTH2):
