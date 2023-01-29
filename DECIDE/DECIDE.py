@@ -34,6 +34,7 @@ FUV Final Unlocking Vector.
 """
 import math as m
 
+
 def DECIDE():
     return
 
@@ -84,8 +85,31 @@ def LIC_4():
 def LIC_5():
     return
 
-def LIC_6():
-    return
+def LIC_6(points, n_pts, dist) -> bool:
+    result = False 
+    # Handle invalid data
+    if n_pts < 3 or len(points) < 3 or dist <= 0:
+        return result
+    
+    for i in range(len(points) - n_pts):
+        for j in range(i, i + n_pts):
+
+            if points[i] != points[i+n_pts-1]:
+                p_line = m.dist(points[i], points[i+n_pts-1])
+                num = (points[i+n_pts][0] - points[i][0])*(points[i][1] - points[j][1]) - (points[i][0] - points[j][0])*(points[i][1] - points[i + n_pts][1])
+                denom = m.sqrt((points[i+n_pts][0] - points[i][0])**2 + (points[i+n_pts][1] - points[i][1])**2)
+                dis_to_line = abs(num)/denom
+                if dis_to_line > dist:
+                    result = True
+                    break
+                
+            if points[i] == points[i+n_pts-1]:
+                dis = m.dist(points[i], points[j])
+                if dis > dist:
+                    result = True
+                    break
+    
+    return result
 
 def LIC_7():
     return
