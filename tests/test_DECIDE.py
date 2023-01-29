@@ -63,8 +63,59 @@ class TestDECIDE(unittest.TestCase):
     def test_LIC_8(self):
         pass
 
-    def test_LIC_9(self):
-        pass
+    def test_LIC_9_invalid(self):
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        C_PTS = 0
+        D_PTS = 1
+        EPSILON = 1
+        result = LIC_9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON)
+        self.assertFalse(result)
+
+    def test_LIC_9_invalid2(self):
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        C_PTS = 1
+        D_PTS = 0
+        EPSILON = 1
+        result = LIC_9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON)
+        self.assertFalse(result)
+
+    def test_LIC_9_invalid3(self):
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        C_PTS = 2
+        D_PTS = 2
+        EPSILON = 1
+        result = LIC_9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON)
+        self.assertFalse(result)
+
+    def test_LIC_9_neg(self):
+        NUMPOINTS = 4
+        POINTS = [(1,1), (2,2), (3,3), (4,4)]
+        C_PTS = 1
+        D_PTS = 1
+        EPSILON = 1
+        result = LIC_9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON)
+        self.assertFalse(result)
+
+    def test_LIC_9_neg2(self):
+        NUMPOINTS = 5
+        POINTS = [(1,1), (3,1), (3,3), (4,4), (5,4)]
+        C_PTS = 1
+        D_PTS = 1
+        EPSILON = m.pi - m.pi / 100
+        result = LIC_9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON)
+        self.assertFalse(result)
+    
+    def test_LIC_9_pos(self):
+        NUMPOINTS = 5
+        POINTS = [(1,1), (3,2), (3,3), (4,4), (5,5)]
+        C_PTS = 1
+        D_PTS = 1
+        EPSILON = m.pi / 2
+        result = LIC_9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON)
+        self.assertTrue(result)
 
     def test_LIC_10(self):
         pass
