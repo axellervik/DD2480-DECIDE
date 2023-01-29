@@ -42,9 +42,24 @@ class TestDECIDE(unittest.TestCase):
         RADIUS1 = 1
         self.assertFalse(LIC_1(POINTS, RADIUS1))
 
-    def test_LIC_2(self):
-        pass
+    def test_LIC_2_invalid(self):
+        POINTS = [(1,1), (2,2), (3,3)]
+        EPSILON = -1
+        result = LIC_2(POINTS, EPSILON)
+        self.assertFalse(result)
 
+    def test_LIC_2_neg(self):
+        POINTS = [(2,2), (2,2), (3,3)]
+        EPSILON = (m.pi/2)
+        result = LIC_2(POINTS, EPSILON)
+        self.assertFalse(result)
+
+    def test_LIC_2_pos(self):
+        POINTS = [(1,1), (2,2), (3,3)]
+        EPSILON = (m.pi/2)
+        result = LIC_2(POINTS, EPSILON)
+        self.assertTrue(result)
+        
     def test_LIC_3_pos(self):
         # the following points form a triangle with area 0.5
         POINTS = [(0,0), (0,1), (1,0)]

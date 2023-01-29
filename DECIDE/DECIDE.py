@@ -75,8 +75,27 @@ def LIC_1(points, radius1) -> bool:
             break
     return result
 
-def LIC_2():
-    return
+def LIC_2(points, epsilon) -> bool:
+    result = False
+    # Handle invalid data
+    if epsilon < 0:
+        return result
+    for i in range(len(points) - 2):
+        if points[i] != points[i+1] and points[i+1] != points[i+2]:
+            x = m.dist(points[i], points[i+1])
+            y = m.dist(points[i+1], points[i+2])
+            abs_x = abs(x)
+            abs_y = abs(y)
+            angle = m.acos(x*y/(abs_x*abs_y))
+            if angle < m.pi - epsilon or angle > m.pi - epsilon: 
+                result = True
+                break
+            
+        return result
+        
+        
+        
+    return result
 
 def LIC_3(points, area1) -> bool:
     result = False
