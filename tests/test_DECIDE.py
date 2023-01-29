@@ -28,8 +28,27 @@ class TestDECIDE(unittest.TestCase):
     def test_LIC_2(self):
         pass
 
-    def test_LIC_3(self):
-        pass
+    def test_LIC_3_pos(self):
+        # the following points form a triangle with area 0.5
+        POINTS = [(0,0), (0,1), (1,0)]
+        AREA1 = 0.49
+        self.assertTrue(LIC_3(POINTS, AREA1))
+
+    def test_LIC_3_neg(self):
+        # the following points form a triangle with area 0.5
+        POINTS = [(0,0), (0,1), (1,0)]
+        AREA1 = 0.5
+        self.assertFalse(LIC_3(POINTS, AREA1))
+
+    def test_LIC_3_invalid1(self):
+        POINTS = [(0,0), (0,1), (1,0)]
+        AREA1 = -1
+        self.assertFalse(LIC_3(POINTS, AREA1))
+
+    def test_LIC_3_invalid2(self):
+        POINTS = [(0,0), (0,1)]
+        AREA1 = 1
+        self.assertFalse(LIC_3(POINTS, AREA1))
 
     def test_LIC_4(self):
         pass
