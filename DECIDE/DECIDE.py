@@ -93,8 +93,40 @@ def LIC_11():
 def LIC_12():
     return
 
-def LIC_13():
-    return
+def LIC_13(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1, RADIUS2):
+    if(NUMPOINTS < 5 or RADIUS2 < 0):
+        return False
+    
+    finished_RADIUS1 = False
+    finished_RADIUS2 = False
+    for i in range(NUMPOINTS):
+        if(finished_RADIUS1 and finished_RADIUS2):
+            break
+        x1 = POINTS[i][0]
+        y1 = POINTS[i][1]
+        for j in range(NUMPOINTS):
+            if(abs(x1 - POINTS[j][0]) == A_PTS and abs(y1 - POINTS[j][1]) == B_PTS and (x1,y1) != POINTS[j]):
+                x2 = POINTS[j][0]
+                y2 = POINTS[j][1]
+                for k in range(NUMPOINTS):
+                     if(abs(x2 - POINTS[k][0]) == A_PTS and abs(y2 - POINTS[k][1]) == B_PTS and (x1,y1) != POINTS[k] and (x2,y2) != POINTS[k]):
+                        x3 = POINTS[k][0]
+                        y3 = POINTS[k][1]
+
+                        d1 = m.dist((x1,y1), (x2,y2))
+                        d2 = m.dist((x1,y1), (x3,y3))
+                        d3 = m.dist((x2,y2), (x3,y3))
+                        maxDistance = max(d1, d2, d3)
+
+                        if(maxDistance > RADIUS1*2):
+                            finished_RADIUS1 = True
+
+                        if(maxDistance <= RADIUS2*2):
+                            finished_RADIUS2 = True
+
+    if(finished_RADIUS1 and finished_RADIUS2):
+        return True
+    return False
 
 def LIC_14():
     return
