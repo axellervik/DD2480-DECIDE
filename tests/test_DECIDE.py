@@ -49,20 +49,21 @@ class TestDECIDE(unittest.TestCase):
         AREA2 = -1
         E_PTS = 1
         F_PTS = 1
-        POINTS = [[1,1], [2,2], [3,3], [4,4], [5,5]]
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
         NUMPOINTS = 5
         self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
 
     def test_LIC_14_pos(self):
         AREA1 = 1
-        AREA2 = 1
+        AREA2 = 100
         E_PTS = 1
-        F_PTS = 4
-        POINTS = [[1,1], [1,2], [3,3]]
-        NUMPOINTS = 3
+        F_PTS = 1
+        POINTS = [(1,1), (2,2), (3,1), (4,4), (5,5), (6,4)]
+        NUMPOINTS = 6
         self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
 
     def test_LIC_14_neg(self):
+        # tests if false if numpoints is less than 5
         AREA1 = 1
         AREA2 = 1
         E_PTS = 1
@@ -72,11 +73,12 @@ class TestDECIDE(unittest.TestCase):
         self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
 
     def test_LIC_14_neg_2(self):
-        AREA1 = 1
+        # tests if false if wrong areas
+        AREA1 = 100
         AREA2 = 1
         E_PTS = 1
         F_PTS = 1
-        POINTS = [[1,1], [2,2], [3,3], [4,4], [5,5]]
+        POINTS = [(1,1), (2,2), (3,1), (4,4), (5,5), (6,4)]
         NUMPOINTS = 5
         self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
         
