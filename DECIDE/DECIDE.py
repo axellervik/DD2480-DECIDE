@@ -100,8 +100,16 @@ def LIC_5():
 def LIC_6():
     return
 
-def LIC_7():
-    return
+def LIC_7(points, k_pts, length1) -> bool:
+    result = False
+    # Handle invalid data
+    if k_pts < 1 or len(points)-2 < k_pts or len(points) < 3 or length1 < 0:
+        return result
+    for i in range(len(points)-k_pts-1):
+        if m.dist(points[i], points[i+1+k_pts]) > length1:
+            result = True
+            break
+    return result
 
 def LIC_8():
     return
