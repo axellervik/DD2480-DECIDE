@@ -2,6 +2,7 @@
 Authors:
 
 Linus Below Blomkvist <libl@kth.se>
+Ali Asbai <asbai@kth.se>
  
 code skeleton
 
@@ -32,6 +33,8 @@ PUM Preliminary Unlocking Matrix.
 FUV Final Unlocking Vector.
 
 """
+import math as m
+
 import math as m
 
 def DECIDE():
@@ -151,5 +154,32 @@ def LIC_13(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1, RADIUS2):
         return True
     return False
 
-def LIC_14():
-    return
+def LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS):
+    if(NUMPOINTS < 5 or AREA2 < 0):
+        return False
+    
+    finished_AREA1 = False
+    finished_AREA2 = False
+    for i in range(NUMPOINTS):
+        if(finished_AREA1 and finished_AREA2):
+            break
+        x1 = POINTS[i][0]
+        y1 = POINTS[i][1]
+
+        x2 = POINTS[(i+E_PTS)%NUMPOINTS][0]
+        y2 = POINTS[(i+E_PTS)%NUMPOINTS][1]
+
+        x3 = POINTS[(i+E_PTS+F_PTS)%NUMPOINTS][0]
+        y3 = POINTS[(i+E_PTS+F_PTS)%NUMPOINTS][1]
+
+        s = (m.dist([x1,y1], [x2,y2]) + m.dist([x2,y2], [x3,y3]) + m.dist([x1,y1], [x3,y3])) / 2
+        area = m.sqrt(s * (s - m.dist([x1,y1], [x2,y2])) * (s - m.dist([x2,y2], [x3,y3])) * (s - m.dist([x1,y1], [x3,y3])))
+
+        if (area > AREA1):
+            finished_AREA1 = True
+        if (area < AREA2):
+            finished_AREA2 = True
+    
+    if(finished_AREA1 and finished_AREA2):
+        return True
+    return False
