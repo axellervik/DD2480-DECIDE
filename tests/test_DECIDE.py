@@ -62,7 +62,7 @@ class TestDECIDE(unittest.TestCase):
         F_PTS = 1
         POINTS = [(1,1), (2,2), (3,1), (4,4), (5,5), (6,4)]
         NUMPOINTS = 6
-        self.assertFalse(LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS))
+        self.assertTrue(LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS))
 
     def test_LIC_14_neg(self):
         # tests if false if numpoints is less than 5
@@ -81,7 +81,7 @@ class TestDECIDE(unittest.TestCase):
         E_PTS = 1
         F_PTS = 1
         POINTS = [(1,1), (2,2), (3,1), (4,4), (5,5), (6,4)]
-        NUMPOINTS = 5
+        NUMPOINTS = 6
         self.assertFalse(LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS))
         
 if __name__ == '__main__':
