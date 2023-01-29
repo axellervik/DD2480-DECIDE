@@ -33,6 +33,7 @@ PUM Preliminary Unlocking Matrix.
 FUV Final Unlocking Vector.
 
 """
+import math as m
 
 import math as m
 
@@ -48,17 +49,50 @@ def PUM():
 def FUV():
     return
 
-def LIC_0():
-    return
+def LIC_0(points, length1) -> bool:
+    result = False
+    # Handle invalid data
+    if length1 < 0:
+        return result
+    for i in range(len(points) - 1):
+        if m.dist(points[i], points[i+1]) > length1:
+            result = True
+            break
+    return result
 
-def LIC_1():
-    return
+def LIC_1(points, radius1) -> bool:
+    result = False
+    # Handle invalid data
+    if radius1 < 0 or len(points) < 3:
+        return result
+    for i in range(len(points) - 2):
+        a = m.dist(points[i], points[i+1])
+        b = m.dist(points[i+1], points[i+2])
+        c = m.dist(points[i], points[i+2])
+        abc_div_2 = (a+b+c) / 2
+        if float(radius1) >= a*b*c / (4*m.sqrt(abc_div_2*(abc_div_2-a)*(abc_div_2-b)*(abc_div_2-c))):
+            result = True
+            break
+    return result
 
 def LIC_2():
     return
 
-def LIC_3():
-    return
+def LIC_3(points, area1) -> bool:
+    result = False
+    # Handle invalid data
+    if area1 < 0 or len(points) < 3:
+        return result
+    for i in range(len(points) - 2):
+        a = m.dist(points[i], points[i+1])
+        b = m.dist(points[i+1], points[i+2])
+        c = m.dist(points[i], points[i+2])
+        abc_div_2 = (a+b+c) / 2
+        area = m.sqrt((abc_div_2*(abc_div_2-a)*(abc_div_2-b)*(abc_div_2-c)))
+        if area > area1:
+            result = True
+            break
+    return result
 
 def LIC_4():
     return
@@ -87,8 +121,38 @@ def LIC_11():
 def LIC_12():
     return
 
-def LIC_13():
-    return
+def LIC_13(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1, RADIUS2):
+    if(NUMPOINTS < 5 or RADIUS2 < 0):
+        return False
+    
+    finished_RADIUS1 = False
+    finished_RADIUS2 = False
+    for i in range(NUMPOINTS):
+        if(finished_RADIUS1 and finished_RADIUS2):
+            break
+        x1 = POINTS[i][0]
+        y1 = POINTS[i][1]
+
+        x2 = POINTS[(i + A_PTS)%NUMPOINTS][0]
+        y2 = POINTS[(i + A_PTS)%NUMPOINTS][1]
+
+        x3 = POINTS[(i + A_PTS + B_PTS)%NUMPOINTS][0]
+        y3 = POINTS[(i + A_PTS + B_PTS)%NUMPOINTS][1]
+
+        d1 = m.dist((x1,y1), (x2,y2))
+        d2 = m.dist((x1,y1), (x3,y3))
+        d3 = m.dist((x2,y2), (x3,y3))
+        maxDistance = max(d1, d2, d3)
+
+        if(maxDistance > RADIUS1*2):
+            finished_RADIUS1 = True
+
+        if(maxDistance <= RADIUS2*2):
+            finished_RADIUS2 = True
+
+    if(finished_RADIUS1 and finished_RADIUS2):
+        return True
+    return False
 
 def LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS):
     if(NUMPOINTS < 5 or AREA2 < 0):
