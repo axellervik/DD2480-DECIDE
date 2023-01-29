@@ -1,4 +1,6 @@
 import unittest
+from DECIDE.DECIDE import *
+
 
 class TestDECIDE(unittest.TestCase):
 
@@ -51,7 +53,7 @@ class TestDECIDE(unittest.TestCase):
         F_PTS = 1
         POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
         NUMPOINTS = 5
-        self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
+        self.assertFalse(LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS))
 
     def test_LIC_14_pos(self):
         AREA1 = 1
@@ -60,7 +62,7 @@ class TestDECIDE(unittest.TestCase):
         F_PTS = 1
         POINTS = [(1,1), (2,2), (3,1), (4,4), (5,5), (6,4)]
         NUMPOINTS = 6
-        self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
+        self.assertFalse(LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS))
 
     def test_LIC_14_neg(self):
         # tests if false if numpoints is less than 5
@@ -68,9 +70,9 @@ class TestDECIDE(unittest.TestCase):
         AREA2 = 1
         E_PTS = 1
         F_PTS = 1
-        POINTS = [[1,1], [2,2], [3,3]]
+        POINTS = [(1,1), (2,2), (3,3)]
         NUMPOINTS = 3
-        self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
+        self.assertFalse(LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS))
 
     def test_LIC_14_neg_2(self):
         # tests if false if wrong areas
@@ -80,7 +82,7 @@ class TestDECIDE(unittest.TestCase):
         F_PTS = 1
         POINTS = [(1,1), (2,2), (3,1), (4,4), (5,5), (6,4)]
         NUMPOINTS = 5
-        self.assertFalse(LIC_14(AREA1, AREA2, E_PTS, F_PTS, POINTS, NUMPOINTS))
+        self.assertFalse(LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS))
         
 if __name__ == '__main__':
     unittest.main()
