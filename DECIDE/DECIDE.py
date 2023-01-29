@@ -105,6 +105,7 @@ def LIC_12(NUMPOINTS, POINTS, LENGTH1, LENGTH2, K_PTS):
         p2 = POINTS[(i + K_PTS)%NUMPOINTS]
 
         dist = m.dist(p1, p2)
+
         if (dist > LENGTH1):
             finnished_length1 = True
         if (dist < LENGTH2):
