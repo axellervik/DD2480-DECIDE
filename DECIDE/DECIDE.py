@@ -91,24 +91,22 @@ def LIC_13():
     return
 
 def LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS):
-    if(NUMPOINTS < 5):
+    if(NUMPOINTS < 5 or AREA2 < 0):
         return False
     
     finished_AREA1 = False
     finished_AREA2 = False
-    AREA1_points = [[-1 for i in range(2)] for j in range(3)]
-    AREA2_points = [[-1 for i in range(2)] for j in range(3)]
     for i in range(NUMPOINTS):
         if(finished_AREA1 and finished_AREA2):
             break
         x1 = POINTS[i][0]
         y1 = POINTS[i][1]
         for j in range(NUMPOINTS):
-            if(abs(x1 - POINTS[j][0]) == E_PTS and abs(y1 - POINTS[j][1]) == F_PTS):
+            if(abs(x1 - POINTS[j][0]) == E_PTS and abs(y1 - POINTS[j][1]) == F_PTS and (x1, y1) != POINTS[j]):
                 x2 = POINTS[j][0]
                 y2 = POINTS[j][1]
                 for k in range(NUMPOINTS):
-                     if(abs(x2 - POINTS[k][0]) == E_PTS and abs(y2 - POINTS[k][1]) == F_PTS):
+                     if(abs(x2 - POINTS[k][0]) == E_PTS and abs(y2 - POINTS[k][1]) == F_PTS and (x1, y1) != POINTS[k] and (x2, y2) != POINTS[k]):
                         x3 = POINTS[k][0]
                         y3 = POINTS[k][1]
 
@@ -116,21 +114,9 @@ def LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS):
                         area = (s*(s - m.dist([x1,y1], [x2,y2]))*(s - m.dist([x2,y2], [x3,y3]))*(s - m.dist([x1,y1], [x3,y3]))) ** 0.5
 
                         if(area > AREA1):
-                            AREA1_points[0][0] = x1
-                            AREA1_points[0][1] = y1
-                            AREA1_points[1][0] = x2
-                            AREA1_points[1][1] = y2
-                            AREA1_points[2][0] = x3
-                            AREA1_points[2][1] = y3
                             finished_AREA1 = True
 
                         if(area < AREA2):
-                            AREA2_points[0][0] = x1
-                            AREA2_points[0][1] = y1
-                            AREA2_points[1][0] = x2
-                            AREA2_points[1][1] = y2
-                            AREA2_points[2][0] = x3
-                            AREA2_points[2][1] = y3
                             finished_AREA2 = True
 
     if(finished_AREA1 and finished_AREA2):
