@@ -88,8 +88,36 @@ class TestDECIDE(unittest.TestCase):
     def test_LIC_10(self):
         pass
 
-    def test_LIC_11(self):
-        pass
+    def test_LIC_11_invalid1(self):
+        # tests is false if G_PTS > NUMPOINTS - 2 
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        G_PTS = 4
+        result = LIC_11(NUMPOINTS, POINTS, G_PTS)
+        self.assertFalse(result)
+
+    def test_LIC_11_invalid2(self):
+        # tests is false if G_PTS < 1
+        NUMPOINTS = 5
+        POINTS = [(1,1), (2,2), (3,3), (4,4), (5,5)]
+        G_PTS = 0
+        result = LIC_11(NUMPOINTS, POINTS, G_PTS)
+        self.assertFalse(result)
+        
+    def test_LIC_11_pos(self):
+        NUMPOINTS = 5
+        POINTS = [(2,2), (3,3), (1,1), (4,4), (5,5)]
+        G_PTS = 2
+        result = LIC_11(NUMPOINTS, POINTS, G_PTS)
+        self.assertTrue(result)
+
+    def test_LIC_11_neg(self):
+        # tests is false if NUMPOINTS <= 3
+        NUMPOINTS = 2
+        POINTS = [(1,1), (2,2)]
+        G_PTS = 0
+        result = LIC_11(NUMPOINTS, POINTS, G_PTS)
+        self.assertFalse(result)
 
     def test_LIC_12(self):
         pass

@@ -115,8 +115,17 @@ def LIC_9():
 def LIC_10():
     return
 
-def LIC_11():
-    return
+def LIC_11(NUMPOINTS, POINTS, G_PTS):
+    if(NUMPOINTS < 3 or G_PTS < 1 or NUMPOINTS - 2 < G_PTS):
+        return False
+    
+    for i in range(NUMPOINTS - G_PTS):
+        p1 = POINTS[i]
+        p2 = POINTS[(i + G_PTS)]
+
+        if(p2[0] - p1[0] < 0):
+            return True
+    return False
 
 def LIC_12():
     return
