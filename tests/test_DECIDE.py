@@ -76,8 +76,23 @@ class TestDECIDE(unittest.TestCase):
     def test_LIC_6(self):
         pass
 
-    def test_LIC_7(self):
-        pass
+    def test_LIC_7_pos(self):
+        POINTS = [(0,0),(5,5),(99,-99),(10,10)]
+        K_POINTS = 2
+        LENGTH1 = 10
+        self.assertTrue(LIC_7(POINTS, K_POINTS, LENGTH1))
+
+    def test_LIC_7_neg(self):
+        POINTS = [(0,0),(100,100),(2,2),(102,102)]
+        K_POINTS = 1
+        LENGTH1 = 100
+        self.assertFalse(LIC_7(POINTS, K_POINTS, LENGTH1))
+
+    def test_LIC_7_invalid(self):
+        POINTS = [(0,0),(1,1)]
+        K_POINTS = 1
+        LENGTH1 = -1
+        self.assertFalse(LIC_7(POINTS, K_POINTS, LENGTH1))
 
     def test_LIC_8(self):
         pass
