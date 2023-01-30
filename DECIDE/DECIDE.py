@@ -116,8 +116,17 @@ def LIC_3(points, area1) -> bool:
 def LIC_4():
     return
 
-def LIC_5():
-    return
+def LIC_5(points) -> bool:
+    result = False
+    # Handle invalid data
+    if len(points) < 2:
+        return result
+    for i in range(len(points) - 1):
+        x_dist = points[i + 1][0] - points[i][0]
+        if x_dist == 0:
+            result = True
+            break
+    return result
 
 def LIC_6():
     return
