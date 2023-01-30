@@ -41,26 +41,8 @@ class LOGICAL_CONNECTOR(Enum):
     ANDD = 1
     ORR = 2
 
-def DECIDE():
-    return
 
 
-def PUM(LCM, CMV):
-    result = [[False for i in range(15)] for j in range(15)]
-
-    for i in range(15):
-        for j in range(15):
-            if LCM[i][j] == LOGICAL_CONNECTOR.ANDD:
-                result[i][j] = CMV[i] and CMV[j]
-            elif LCM[i][j] == LOGICAL_CONNECTOR.ORR:
-                result[i][j] = CMV[i] or CMV[j]
-            else:
-                result[i][j] = True
-
-    return result
-
-def FUV():
-    return
 
 def LIC_0(points, length1) -> bool:
     result = False
@@ -365,3 +347,42 @@ def CMV(points, length1, radius1, epsilon, area1, q_pts, quads, dist, n_pts, k_p
     lic_vector.append(LIC_13(len(points), points, a_pts, b_pts, radius1, radius2))
     lic_vector.append(LIC_14(len(points), points, area1, area2, e_pts, f_pts))
     return lic_vector
+
+
+def PUM(LCM, CMV):
+    result = [[False for i in range(15)] for j in range(15)]
+
+    for i in range(15):
+        for j in range(15):
+            if LCM[i][j] == LOGICAL_CONNECTOR.ANDD:
+                result[i][j] = CMV[i] and CMV[j]
+            elif LCM[i][j] == LOGICAL_CONNECTOR.ORR:
+                result[i][j] = CMV[i] or CMV[j]
+            else:
+                result[i][j] = True
+
+    return result
+
+
+def FUV(PUV, LCM, CMV):
+    PUM_vector = PUM(LCM, CMV);
+    FUV_vector = []
+    for i in range(15):
+       if PUV[i] == False:
+           FUV_vector.append(True)
+       elif PUV[i] == True: 
+            for j in range(15):
+                if PUM_vector[i][j] == False:
+                    FUV_vector.append(False)
+                    break
+                else:
+                    FUV_vector.append(True)
+    
+    return FUV_vector
+    
+    
+
+
+
+def DECIDE():
+    return
