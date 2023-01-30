@@ -2,6 +2,7 @@
 Authors:
 
 Linus Below Blomkvist <libl@kth.se>
+Ali Asbai <asbai@kth.se>
  
 code skeleton
 
@@ -32,6 +33,8 @@ PUM Preliminary Unlocking Matrix.
 FUV Final Unlocking Vector.
 
 """
+import math as m
+
 import math as m
 
 def DECIDE():
@@ -72,11 +75,43 @@ def LIC_1(points, radius1) -> bool:
             break
     return result
 
-def LIC_2():
-    return
+def LIC_2(points, epsilon) -> bool:
+    result = False
+    # Handle invalid data
+    if epsilon < 0:
+        return result
+    for i in range(len(points) - 2):
+        if points[i] != points[i+1] and points[i+1] != points[i+2]:
+            x = m.dist(points[i], points[i+1])
+            y = m.dist(points[i+1], points[i+2])
+            abs_x = abs(x)
+            abs_y = abs(y)
+            angle = m.acos(x*y/(abs_x*abs_y))
+            if angle < m.pi - epsilon or angle > m.pi - epsilon: 
+                result = True
+                break
+            
+        return result
+        
+        
+        
+    return result
 
-def LIC_3():
-    return      
+def LIC_3(points, area1) -> bool:
+    result = False
+    # Handle invalid data
+    if area1 < 0 or len(points) < 3:
+        return result
+    for i in range(len(points) - 2):
+        a = m.dist(points[i], points[i+1])
+        b = m.dist(points[i+1], points[i+2])
+        c = m.dist(points[i], points[i+2])
+        abc_div_2 = (a+b+c) / 2
+        area = m.sqrt((abc_div_2*(abc_div_2-a)*(abc_div_2-b)*(abc_div_2-c)))
+        if area > area1:
+            result = True
+            break
+    return result
 
 def LIC_4(points, q_pts, quads):
     result = False
@@ -99,8 +134,17 @@ def LIC_4(points, q_pts, quads):
             break
     return result
 
-def LIC_5():
-    return
+def LIC_5(points) -> bool:
+    result = False
+    # Handle invalid data
+    if len(points) < 2:
+        return result
+    for i in range(len(points) - 1):
+        x_dist = points[i + 1][0] - points[i][0]
+        if x_dist == 0:
+            result = True
+            break
+    return result
 
 def LIC_6():
     return
@@ -108,17 +152,67 @@ def LIC_6():
 def LIC_7():
     return
 
-def LIC_8():
-    return
+def LIC_8(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1):
+    if (NUMPOINTS < 5 or 1 > A_PTS or B_PTS > 1 or A_PTS + B_PTS > NUMPOINTS - 3):
+        return False
+    
+    for i in range(NUMPOINTS):
+        p1 = POINTS[i]
+        p2 = POINTS[(i + A_PTS)%NUMPOINTS]
+        p3 = POINTS[(i + A_PTS + B_PTS)%NUMPOINTS]
+        
+        d1 = m.dist(p1, p2)
+        d2 = m.dist(p1, p3)
+        d3 = m.dist(p2, p3)
+        maxDistance = max(d1, d2, d3)
 
-def LIC_9():
-    return
+        if(maxDistance > RADIUS1*2):
+            return True
+    return False
 
-def LIC_10():
-    return
+def LIC_9(NUMPOINTS, POINTS, C_PTS, D_PTS, EPSILON):
+    if(NUMPOINTS < 5 or C_PTS < 1 or D_PTS < 1 or C_PTS + D_PTS > NUMPOINTS - 3):
+        return False
+    
+    for i in range(NUMPOINTS):
+        p1 = POINTS[i]
+        p2 = POINTS[(i + C_PTS)%NUMPOINTS]
+        p3 = POINTS[(i + C_PTS + D_PTS)%NUMPOINTS]
 
-def LIC_11():
-    return
+        if(p1 != p2 and p3 != p2):
+            angle = m.atan2(p3[1]-p2[1], p3[0]-p2[0]) - m.atan2(p1[1]-p2[1], p1[0]-p2[0])
+            if(abs(angle) < m.pi - EPSILON or abs(angle) > m.pi + EPSILON):
+                return True
+
+    return False
+
+def LIC_10(NUMPOINTS, POINTS, E_PTS, F_PTS, AREA1):
+    if (NUMPOINTS < 5 or 1 > E_PTS or 1 > F_PTS or E_PTS + F_PTS > NUMPOINTS - 3):
+        return False
+
+    for i in range(NUMPOINTS):
+        p1 = POINTS[i]
+        p2 = POINTS[(i + E_PTS)%NUMPOINTS]
+        p3 = POINTS[(i + E_PTS + F_PTS)%NUMPOINTS]
+
+        s = (m.dist(p1, p2) + m.dist(p2, p3) + m.dist(p1, p3)) / 2
+        area = m.sqrt(s * (s - m.dist(p1, p2)) * (s - m.dist(p2, p3)) * (s - m.dist(p1, p3)))
+
+        if (area > AREA1):
+            return True
+    return False
+
+def LIC_11(NUMPOINTS, POINTS, G_PTS):
+    if(NUMPOINTS < 3 or G_PTS < 1 or NUMPOINTS - 2 < G_PTS):
+        return False
+    
+    for i in range(NUMPOINTS - G_PTS):
+        p1 = POINTS[i]
+        p2 = POINTS[(i + G_PTS)]
+
+        if(p2[0] - p1[0] < 0):
+            return True
+    return False
 
 def LIC_12():
     return
@@ -156,5 +250,32 @@ def LIC_13(NUMPOINTS, POINTS, A_PTS, B_PTS, RADIUS1, RADIUS2):
         return True
     return False
 
-def LIC_14():
-    return
+def LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS):
+    if(NUMPOINTS < 5 or AREA2 < 0):
+        return False
+    
+    finished_AREA1 = False
+    finished_AREA2 = False
+    for i in range(NUMPOINTS):
+        if(finished_AREA1 and finished_AREA2):
+            break
+        x1 = POINTS[i][0]
+        y1 = POINTS[i][1]
+
+        x2 = POINTS[(i+E_PTS)%NUMPOINTS][0]
+        y2 = POINTS[(i+E_PTS)%NUMPOINTS][1]
+
+        x3 = POINTS[(i+E_PTS+F_PTS)%NUMPOINTS][0]
+        y3 = POINTS[(i+E_PTS+F_PTS)%NUMPOINTS][1]
+
+        s = (m.dist([x1,y1], [x2,y2]) + m.dist([x2,y2], [x3,y3]) + m.dist([x1,y1], [x3,y3])) / 2
+        area = m.sqrt(s * (s - m.dist([x1,y1], [x2,y2])) * (s - m.dist([x2,y2], [x3,y3])) * (s - m.dist([x1,y1], [x3,y3])))
+
+        if (area > AREA1):
+            finished_AREA1 = True
+        if (area < AREA2):
+            finished_AREA2 = True
+    
+    if(finished_AREA1 and finished_AREA2):
+        return True
+    return False
