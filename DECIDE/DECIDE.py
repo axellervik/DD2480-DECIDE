@@ -3,6 +3,7 @@ Authors:
 
 Linus Below Blomkvist <libl@kth.se>
 Ali Asbai <asbai@kth.se>
+Klara Alpsten <kalpsten@kth.se>
  
 code skeleton
 
