@@ -113,8 +113,26 @@ def LIC_3(points, area1) -> bool:
             break
     return result
 
-def LIC_4():
-    return
+def LIC_4(points, q_pts, quads):
+    result = False
+    # Handle invalid data
+    if q_pts < 2 or len(points) < q_pts or quads < 1 or 3 < quads:
+        return result
+    for i in range(len(points) - q_pts + 1):
+        quad_visited = [0,0,0,0]
+        for point in points[i:(i+q_pts)]:
+            if point[0] >= 0 and point[1] >= 0 and not quad_visited[0]:
+                quad_visited[0] = 1
+            if point[0] <= 0 and point[1] >= 0 and not quad_visited[1]:
+                quad_visited[1] = 1
+            if point[0] <= 0 and point[1] <= 0 and not quad_visited[2]:
+                quad_visited[2] = 1
+            if point[0] >= 0 and point[1] <= 0 and not quad_visited[3]:
+                quad_visited[3] = 1
+        if sum(quad_visited) > quads:
+            result = True
+            break
+    return result
 
 def LIC_5(points) -> bool:
     result = False

@@ -82,8 +82,23 @@ class TestDECIDE(unittest.TestCase):
         AREA1 = 1
         self.assertFalse(LIC_3(POINTS, AREA1))
 
-    def test_LIC_4(self):
-        pass
+    def test_LIC_4_pos(self):
+        POINTS = [(1,1),(-1,1),(-1,-1),(1,-1)]
+        Q_PTS = 4
+        QUADS = 3
+        self.assertTrue(LIC_4(POINTS, Q_PTS, QUADS))
+
+    def test_LIC_4_neg(self):
+        POINTS = [(1,1),(2,2),(-1,-1),(1,-1)]
+        Q_PTS = 2
+        QUADS = 3
+        self.assertFalse(LIC_4(POINTS, Q_PTS, QUADS))
+
+    def test_LIC_4_invalid(self):
+        POINTS = [(1,1),(-1,1),(-1,-1),(1,-1)]
+        Q_PTS = 1
+        QUADS = 1
+        self.assertFalse(LIC_4(POINTS, Q_PTS, QUADS))
 
     def test_LIC_5_pos(self):
         POINTS = [(1,1), (1,2), (3,3)]
