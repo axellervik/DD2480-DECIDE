@@ -56,3 +56,4 @@ Maegan: missed most of the project due to illness and problems with communicatio
 
 Axel Lervik
 Klara Alpsten
+Linus Below Blomkvist
