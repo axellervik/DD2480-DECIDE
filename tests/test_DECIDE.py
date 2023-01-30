@@ -27,8 +27,20 @@ class TestDECIDE(unittest.TestCase):
         RADIUS2 = 0
         AREA2 = 0
 
+        POINTS = [(1,1), (2,2), (4,4),(0,0), (0,1), (1,0),(1,1), (2,2), (3,3),(0,0), (0,1), (1,0),(1,1),(-1,1),(-1,-1),(1,-1),(1,1), (1,2), (3,3), (0,0),(1,2),(2,0),(5,5),(0,0),(1,2),(0,0),(5,5)] 
+        DIST = 1
+        N_PTS = 3
+        Q_PTS = 4
+        QUADS = 3
+        AREA1 = 0.49
+        EPSILON = (m.pi/2)
+        LENGTH1 = 2
+        RADIUS1 = 1
+
         # Conditions met vector:
         CMV = CMV(POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2)
+
+        
 
         
 
