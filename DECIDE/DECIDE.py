@@ -41,9 +41,6 @@ class LOGICAL_CONNECTOR(Enum):
     ANDD = 1
     ORR = 2
 
-def FUV():
-    return
-
 def LIC_0(points, length1) -> bool:
     result = False
     # Handle invalid data
@@ -359,6 +356,22 @@ def PUM(LCM, CMV):
             else:
                 result[i][j] = True
     return result
+
+def FUV(PUV, LCM, CMV):
+    PUM_vector = PUM(LCM, CMV);
+    FUV_vector = []
+    for i in range(15):
+       if PUV[i] == False:
+           FUV_vector.append(True)
+       elif PUV[i] == True: 
+            for j in range(15):
+                if PUM_vector[i][j] == False:
+                    FUV_vector.append(False)
+                    break
+                else:
+                    FUV_vector.append(True)
+    
+    return FUV_vector
 
 def DECIDE(LCM, POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2):
     CMV = CMV(POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2)
