@@ -40,8 +40,19 @@ Run the tests of the program by
 
 ## Statement of Contributions
 
-The program was written by the group members together, often in meetings involving all or most of the members. Several parts of the startup, such as the code and git structure, was done collectively by Linus, Axel, Klara and Ali. The LICs were mainly completed using pair programming, Linus and Axel did LIC0-7 and Klara and Ali did LIC8-14. The finishing parts were divided among the members. 
+The program was written by the group members together, often in meetings involving all or most of the members. Several parts of the startup, such as the code and git structure, was done collectively. The LICs were mainly completed using pair programming and the finishing parts were divided among the members, see below. 
+
+Ali: designed LIC 0-7 in collaboration with Klara, designed the logic and functions necessary to generate the PUM, documented tests. 
+
+Axel: initialized repository and set up continuous integration, designed LIC 0-7 in collaboration with Linus, merged the functions together in DECIDE. 
+
+Klara: created the initial issues, designed LIC 8-14 in collaboration with Ali, documented tests and created the README. 
+
+Linus: created code skeleton, designed LIC 0-7 in collaboration with Axel, designed functions that generate CMV and FUV.
+
+Maegan: missed most of the project due to illness and problems with communication, helped write test for DECIDE function. 
 
 ## Authors
 
+Axel Lervik
 Klara Alpsten
