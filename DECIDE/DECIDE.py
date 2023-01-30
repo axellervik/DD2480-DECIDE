@@ -4,6 +4,7 @@ Authors:
 Linus Below Blomkvist <libl@kth.se>
 Ali Asbai <asbai@kth.se>
  
+ 
 code skeleton
 
 Variable names:
@@ -37,8 +38,6 @@ import math as m
 def DECIDE():
     return
 
-def CMV():
-    return
 
 def PUM():
     return
@@ -329,3 +328,23 @@ def LIC_14(POINTS, NUMPOINTS, AREA1, AREA2, E_PTS, F_PTS):
     if(finished_AREA1 and finished_AREA2):
         return True
     return False
+
+def CMV(points, length1, radius1, epsilon, area1, q_pts, quads, dist, n_pts, k_pts, a_pts, b_pts, c_pts, d_pts, e_pts, f_pts, g_pts, length2, radius2, area2):
+    lic_vector = []
+    lic_vector.append(LIC_0(points, length1))
+    lic_vector.append(LIC_1(points, radius1))
+    lic_vector.append(LIC_2(points, epsilon))
+    lic_vector.append(LIC_3(points, area1))
+    lic_vector.append(LIC_3(points, area1))
+    lic_vector.append(LIC_4(points, q_pts, quads))
+    lic_vector.append(LIC_5(points))
+    lic_vector.append(LIC_6(points, n_pts, dist))
+    lic_vector.append(LIC_7(points, k_pts, length1))
+    lic_vector.append(LIC_8(len(points), points, a_pts, b_pts, radius1))
+    lic_vector.append(LIC_9(len(points), points, c_pts, d_pts, epsilon))
+    lic_vector.append(LIC_10(len(points), points, e_pts, f_pts, area1))
+    lic_vector.append(LIC_11(len(points), points, g_pts))
+    lic_vector.append(LIC_12(len(points), points, length1, length2, k_pts))
+    lic_vector.append(LIC_13(len(points), points, a_pts, b_pts, radius1, radius2))
+    lic_vector.append(LIC_14(len(points), points, area1, area2, e_pts, f_pts))
+    return lic_vector
