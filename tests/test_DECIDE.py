@@ -11,7 +11,7 @@ class TestDECIDE(unittest.TestCase):
 
     def test_DECIDE_pos(self):
         # Parameters:
-        POINTS = [(1,1), (2,2), (4,4),(0,0), (0,1), (1,0),(1,1), (2,2), (3,3),(0,0), (0,1), (1,0),(1,1),(-1,1),(-1,-1),(1,-1),(1,1), (1,2), (3,3), (0,0),(1,2),(2,0),(5,5),(0,0),(1,2), (0,0), (5,5), (1,1), (2,2), (3,1), (4,4), (5,5), (6,4), (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (1,1), (2,2), (3,3), (2,2), (3,3), (1,1), (4,4), (5,5), (1,1), (3,3), (3,1), (4,4), (5,5), (1,1), (3,2), (3,3), (4,4), (5,5), (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (0,0), (5,5), (99,-99), (10,10)]
+        POINTS = [(1,1), (2,2), (4,4),(0,0), (0,1), (1,0), (1,1), (2,2), (3,3),(0,0), (0,1), (1,0), (1,1), (-1,1), (-1,-1), (1,-1), (1,1), (1,2), (3,3), (0,0), (1,2), (2,0), (5,5), (0,0), (1,2), (0,0), (5,5), (1,1), (2,2), (3,1), (4,4), (5,5), (6,4), (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (1,1), (2,2), (3,3), (2,2), (3,3), (1,1), (4,4), (5,5), (1,1), (3,3), (3,1), (4,4), (5,5), (1,1), (3,2), (3,3), (4,4), (5,5), (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (0,0), (5,5), (99,-99), (10,10)]
         LENGTH1 = 2
         RADIUS1 = 1
         EPSILON = (m.pi/2)
@@ -21,8 +21,8 @@ class TestDECIDE(unittest.TestCase):
         DIST = 1
         N_PTS = 3
         K_PTS = 2
-        A_PTS = 1 # maybe 2
-        B_PTS = 1 # maybe 2
+        A_PTS = 1 # A_PTS = 1 also works
+        B_PTS = 1 # B_PTS = 1 also works
         C_PTS = 1
         D_PTS = 1
         E_PTS = 1
@@ -31,11 +31,10 @@ class TestDECIDE(unittest.TestCase):
         LENGTH2 = 100
         RADIUS2 = 100
         AREA2 = 100
-
         # Relevant matrices and vectors:
-        LCM = [[LOGICAL_CONNECTOR.ANDD for i in range(15)] for j in range(15)]
+        LCM = [[LOGICAL_CONNECTOR.ANDD for _ in range(15)] for _ in range(15)]
         PUV = [True for _ in range(15)]
-
+        # Assert that decide launches the missile for the specified input:
         self.assertTrue(DECIDE(LCM, PUV, POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2))
         
     def test_PUM_pos(self):
