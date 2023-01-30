@@ -41,24 +41,6 @@ class LOGICAL_CONNECTOR(Enum):
     ANDD = 1
     ORR = 2
 
-def DECIDE():
-    return
-
-
-def PUM(LCM, CMV):
-    result = [[False for i in range(15)] for j in range(15)]
-
-    for i in range(15):
-        for j in range(15):
-            if LCM[i][j] == LOGICAL_CONNECTOR.ANDD:
-                result[i][j] = CMV[i] and CMV[j]
-            elif LCM[i][j] == LOGICAL_CONNECTOR.ORR:
-                result[i][j] = CMV[i] or CMV[j]
-            else:
-                result[i][j] = True
-
-    return result
-
 def FUV():
     return
 
@@ -365,3 +347,18 @@ def CMV(points, length1, radius1, epsilon, area1, q_pts, quads, dist, n_pts, k_p
     lic_vector.append(LIC_13(len(points), points, a_pts, b_pts, radius1, radius2))
     lic_vector.append(LIC_14(len(points), points, area1, area2, e_pts, f_pts))
     return lic_vector
+
+def PUM(LCM, CMV):
+    result = [[False for i in range(15)] for j in range(15)]
+    for i in range(15):
+        for j in range(15):
+            if LCM[i][j] == LOGICAL_CONNECTOR.ANDD:
+                result[i][j] = CMV[i] and CMV[j]
+            elif LCM[i][j] == LOGICAL_CONNECTOR.ORR:
+                result[i][j] = CMV[i] or CMV[j]
+            else:
+                result[i][j] = True
+    return result
+
+def DECIDE(LCM, POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2):
+    return True
