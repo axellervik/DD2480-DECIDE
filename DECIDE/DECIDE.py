@@ -34,13 +34,30 @@ PUM Preliminary Unlocking Matrix.
 FUV Final Unlocking Vector.
 """
 import math as m
+from enum import Enum
+
+class LOGICAL_CONNECTOR(Enum):
+    NOTUSED = 777
+    ANDD = 1
+    ORR = 2
 
 def DECIDE():
     return
 
 
-def PUM():
-    return
+def PUM(LCM, CMV):
+    result = [[False for i in range(15)] for j in range(15)]
+
+    for i in range(15):
+        for j in range(15):
+            if LCM[i][j] == LOGICAL_CONNECTOR.ANDD:
+                result[i][j] = CMV[i] and CMV[j]
+            elif LCM[i][j] == LOGICAL_CONNECTOR.ORR:
+                result[i][j] = CMV[i] or CMV[j]
+            else:
+                result[i][j] = True
+
+    return result
 
 def FUV():
     return
