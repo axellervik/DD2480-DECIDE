@@ -1,10 +1,15 @@
 import unittest
+from enum import Enum
 from DECIDE.DECIDE import *
 
+class LOGICAL_CONNECTOR(Enum):
+    NOTUSED = 777
+    ANDD = 1
+    ORR = 2
 
 class TestDECIDE(unittest.TestCase):
 
-    def test_DECIDE():
+    def test_DECIDE(self):
         # Parameters:
         POINTS = [(1,1), (2,2), (4,4),(0,0), (0,1), (1,0),(1,1), (2,2), (3,3),(0,0), (0,1), (1,0),(1,1),(-1,1),(-1,-1),(1,-1),(1,1), (1,2), (3,3), (0,0),(1,2),(2,0),(5,5),(0,0),(1,2), (0,0), (5,5), (1,1), (2,2), (3,1), (4,4), (5,5), (6,4), (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (1,1), (2,2), (3,3), (2,2), (3,3), (1,1), (4,4), (5,5), (1,1), (3,3), (3,1), (4,4), (5,5), (1,1), (3,2), (3,3), (4,4), (5,5), (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (0,0), (5,5), (99,-99), (10,10)]
         LENGTH1 = 2
@@ -27,8 +32,11 @@ class TestDECIDE(unittest.TestCase):
         RADIUS2 = 100
         AREA2 = 100
 
-        # Conditions met vector:
-        CMV = CMV(POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2)
+        LCM = [[LOGICAL_CONNECTOR.ANDD for i in range(15)] for j in range(15)]
+
+        # TODO: uncomment the following line once DECIDE function has been created
+        # self.assertTrue(DECIDE(LCM, POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2))
+        
 
     def test_LIC_0_pos(self):
         POINTS = [(1,1), (2,2), (4,4)]
