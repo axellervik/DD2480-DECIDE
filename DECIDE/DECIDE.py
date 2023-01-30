@@ -377,4 +377,9 @@ def FUV(PUV, LCM, CMV):
 def DECIDE(LCM, PUV, POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2):
     cmv = CMV(POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2)
     fuv = FUV(PUV, LCM, cmv)
-    return all(fuv)
+    result = all(fuv)
+    if result:
+        print("YES!")
+    else:
+        print("NO!")
+    return result
