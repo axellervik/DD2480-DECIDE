@@ -4,6 +4,35 @@ from DECIDE.DECIDE import *
 
 class TestDECIDE(unittest.TestCase):
 
+    def test_DECIDE():
+        # Parameters:
+        POINTS = []
+        LENGTH1 = 0
+        RADIUS1 = 0
+        EPSILON = 0
+        AREA1 = 0
+        Q_PTS = 0
+        QUADS = 0
+        DIST = 0
+        N_PTS = 0
+        K_PTS = 0
+        A_PTS = 0
+        B_PTS = 0
+        C_PTS = 0
+        D_PTS = 0
+        E_PTS = 0
+        F_PTS = 0
+        G_PTS = 0
+        LENGTH2 = 0
+        RADIUS2 = 0
+        AREA2 = 0
+
+        # Conditions met vector:
+        CMV = CMV(POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2)
+
+        
+
+
     def test_LIC_0_pos(self):
         POINTS = [(1,1), (2,2), (4,4)]
         LENGTH1 = 2
