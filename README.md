@@ -30,7 +30,7 @@ FUV - Final Unlocking Vector.
 
 ### Running the code
 
-Run the code in the command line by 
+Run the program in the command line by 
 
 `python DECIDE.py`
 
@@ -40,7 +40,7 @@ Run the tests of the program by
 
 ## Statement of Contributions
 
-The program was written by the group members together, often in meetings involving all the members. Several parts of the startup, such as the code and git structure, was done collectively by all members together. The LICs were mainly completed using pair programming, Linus and Axel did LIC0-7 and Klara and Ali did LIC8-14. The finishing parts were divided among the members. 
+The program was written by the group members together, often in meetings involving all the members. Several parts of the startup, such as the code and git structure, was done collectively by Linus, Axel, Klara and Ali. The LICs were mainly completed using pair programming, Linus and Axel did LIC0-7 and Klara and Ali did LIC8-14. The finishing parts were divided among the members. 
 
 ## Authors
 
