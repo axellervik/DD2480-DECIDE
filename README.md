@@ -55,5 +55,9 @@ Maegan: missed most of the project due to illness and problems with communicatio
 ## Authors
 
 Axel Lervik
+
 Klara Alpsten
+
 Linus Below Blomkvist
+
+
