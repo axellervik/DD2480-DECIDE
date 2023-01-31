@@ -2,11 +2,6 @@ import unittest
 from enum import Enum
 from DECIDE.DECIDE import *
 
-class LOGICAL_CONNECTOR(Enum):
-    NOTUSED = 777
-    ANDD = 1
-    ORR = 2
-
 class TestDECIDE(unittest.TestCase):
 
     def test_DECIDE_pos(self):
