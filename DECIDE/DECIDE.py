@@ -1,8 +1,11 @@
 """
 Authors:
 
-Linus Below Blomkvist <libl@kth.se>
 Ali Asbai <asbai@kth.se>
+Axel Lervik <lervik@kth.se>
+Klara Alpsten <kalpsten@kth.se>
+Linus Below Blomkvist <libl@kth.se>
+Maegan Peralta <maegan@kth.se>
  
  
 code skeleton
