@@ -1,8 +1,37 @@
 import unittest
+from enum import Enum
 from DECIDE.DECIDE import *
 
-
 class TestDECIDE(unittest.TestCase):
+
+    '''Test the full program with a positive test case'''
+    def test_DECIDE_pos(self):
+        # Parameters:
+        POINTS = [(1,1), (2,2), (4,4),(0,0), (0,1), (1,0), (1,1), (2,2), (3,3),(0,0), (0,1), (1,0), (1,1), (-1,1), (-1,-1), (1,-1), (1,1), (1,2), (3,3), (0,0), (1,2), (2,0), (5,5), (0,0), (1,2), (0,0), (5,5), (1,1), (2,2), (3,1), (4,4), (5,5), (6,4), (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (1,1), (2,2), (3,3), (2,2), (3,3), (1,1), (4,4), (5,5), (1,1), (3,3), (3,1), (4,4), (5,5), (1,1), (3,2), (3,3), (4,4), (5,5), (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (0,0), (5,5), (99,-99), (10,10)]
+        LENGTH1 = 2
+        RADIUS1 = 1
+        EPSILON = (m.pi/2)
+        AREA1 = 0.49
+        Q_PTS = 4
+        QUADS = 3
+        DIST = 1
+        N_PTS = 3
+        K_PTS = 2
+        A_PTS = 1 # A_PTS = 1 also works
+        B_PTS = 1 # B_PTS = 1 also works
+        C_PTS = 1
+        D_PTS = 1
+        E_PTS = 1
+        F_PTS = 1
+        G_PTS = 2
+        LENGTH2 = 100
+        RADIUS2 = 100
+        AREA2 = 100
+        # Relevant matrices and vectors:
+        LCM = [[LOGICAL_CONNECTOR.ANDD for _ in range(15)] for _ in range(15)]
+        PUV = [True for _ in range(15)]
+        # Assert that decide launches the missile for the specified input:
+        self.assertTrue(DECIDE(LCM, PUV, POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2))
 
     '''Test the PUM funciton with a positive and correct example'''
     def test_PUM_pos(self):

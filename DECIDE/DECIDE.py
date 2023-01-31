@@ -44,9 +44,6 @@ class LOGICAL_CONNECTOR(Enum):
     ANDD = 1
     ORR = 2
 
-
-
-
 def LIC_0(points, length1) -> bool:
     result = False
     # Handle invalid data
@@ -68,6 +65,8 @@ def LIC_1(points, radius1) -> bool:
         b = m.dist(points[i+1], points[i+2])
         c = m.dist(points[i], points[i+2])
         abc_div_2 = (a+b+c) / 2
+        if abc_div_2 == 0 or abc_div_2 == a or abc_div_2 == b or abc_div_2 == c:
+            continue
         if float(radius1) >= a*b*c / (4*m.sqrt(abc_div_2*(abc_div_2-a)*(abc_div_2-b)*(abc_div_2-c))):
             result = True
             break
@@ -149,19 +148,18 @@ def LIC_6(points, n_pts, dist) -> bool:
     # Handle invalid data
     if n_pts < 3 or len(points) < 3 or dist <= 0:
         return result
-    
     for i in range(len(points) - n_pts):
         for j in range(i, i + n_pts):
-
             if points[i] != points[i+n_pts-1]:
                 p_line = m.dist(points[i], points[i+n_pts-1])
                 num = (points[i+n_pts][0] - points[i][0])*(points[i][1] - points[j][1]) - (points[i][0] - points[j][0])*(points[i][1] - points[i + n_pts][1])
                 denom = m.sqrt((points[i+n_pts][0] - points[i][0])**2 + (points[i+n_pts][1] - points[i][1])**2)
+                if denom == 0:
+                    continue
                 dis_to_line = abs(num)/denom
                 if dis_to_line > dist:
                     result = True
-                    break
-                
+                    break   
             if points[i] == points[i+n_pts-1]:
                 dis = m.dist(points[i], points[j])
                 if dis > dist:
@@ -348,13 +346,11 @@ def CMV(points, length1, radius1, epsilon, area1, q_pts, quads, dist, n_pts, k_p
     lic_vector.append(LIC_11(len(points), points, g_pts))
     lic_vector.append(LIC_12(len(points), points, length1, length2, k_pts))
     lic_vector.append(LIC_13(len(points), points, a_pts, b_pts, radius1, radius2))
-    lic_vector.append(LIC_14(len(points), points, area1, area2, e_pts, f_pts))
+    lic_vector.append(LIC_14(points, len(points), area1, area2, e_pts, f_pts))
     return lic_vector
-
 
 def PUM(LCM, CMV):
     result = [[False for i in range(15)] for j in range(15)]
-
     for i in range(15):
         for j in range(15):
             if LCM[i][j] == LOGICAL_CONNECTOR.ANDD:
@@ -363,9 +359,7 @@ def PUM(LCM, CMV):
                 result[i][j] = CMV[i] or CMV[j]
             else:
                 result[i][j] = True
-
     return result
-
 
 def FUV(PUV, LCM, CMV):
     PUM_vector = PUM(LCM, CMV);
@@ -382,10 +376,13 @@ def FUV(PUV, LCM, CMV):
                     FUV_vector.append(True)
     
     return FUV_vector
-    
-    
 
-
-
-def DECIDE():
-    return
+def DECIDE(LCM, PUV, POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2):
+    cmv = CMV(POINTS, LENGTH1, RADIUS1, EPSILON, AREA1, Q_PTS, QUADS, DIST, N_PTS, K_PTS, A_PTS, B_PTS, C_PTS, D_PTS, E_PTS, F_PTS, G_PTS, LENGTH2, RADIUS2, AREA2)
+    fuv = FUV(PUV, LCM, cmv)
+    result = all(fuv)
+    if result:
+        print("YES!")
+    else:
+        print("NO!")
+    return result
